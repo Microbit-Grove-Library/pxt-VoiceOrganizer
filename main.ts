@@ -94,7 +94,6 @@ namespace grovevoicerecognizer {
                 }
                 basic.pause(100);
             }
-
         })
     }
 }
