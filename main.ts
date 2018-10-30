@@ -54,6 +54,16 @@ enum VoiceType {
 //% weight=11 color=#9F79EE icon="\uf108" block="Voice recognizer"
 namespace grovevoicerecognizer {
 
+    const voiceRecognizerEvenNum: number = 3102;
+    
+    export function  getResultFromSerial() : VoiceType
+    {
+        let result: VoiceType;
+        let recv_data: Buffer = null;
+        recv_data = serial.readBuffer(1);
+        return recv_data[0];
+    }
+
     /**
      * Create Grove - Voice-Recognizer
      * @param TX_PIN  TX_PIN num
@@ -63,15 +73,29 @@ namespace grovevoicerecognizer {
     export function createVoiceRecognizer(TX_PIN: SerialPin, RX_PIN: SerialPin) {
         serial.redirect(TX_PIN, RX_PIN, BaudRate.BaudRate9600);
     }
+
+
     /**
-     *  Get Voice-Recognizer result.
-     */
-    //% blockId=grove_get_voice_recognizer_result  block="Get Voice Recognizer Result"
-    export function getResultFromSerial(): VoiceType {
-        let result: VoiceType;
-        let recv_data: Buffer = null;
-        recv_data = serial.readBuffer(1);
-        return recv_data[0];
+    *  Listen to serial for message.
+    *  @param result Listen Voice result.
+    *  @param handler Event handler.
+    */
+    //% blockId=listen_voice_recognzer  block="Receive Voice Recognizer |%result event"
+    export function startListenVoiceRecognizer(result: VoiceType,handler: () => void) 
+    {
+        control.onEvent(voiceRecognizerEvenNum, result, handler);
+
+        control.inBackground(function () {
+            while (1) {
+                
+                result = grovevoicerecognizer.getResultFromSerial()
+                if (result != VoiceType.None) {
+                    control.raiseEvent(voiceRecognizerEvenNum, result);
+                }
+                basic.pause(100);
+            }
+
+        })
     }
 
 }
