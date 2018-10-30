@@ -1,50 +1,6 @@
-enum RedirectSerialPin{
-    //% block=P0
-    P0 = 7,
-    //% block=P1
-    P1 = 8,
-    //% block=P2
-    P2 = 9,
-    //% block=P8
-    P8 = 15,
-    //% block=P12
-    P12 = 19,
-    //% block=P13
-    P13 = 20,
-    //% block=P14
-    P14 = 21,
-    //% block=P15
-    P15 = 22,
-    //% block=P16
-    P16 = 23
-}
-
-enum SerialBuad{
-    //% block=Baud 115200
-    Baud_115200,
-    //% block=Baud 57600
-    Baud_57600,
-    //% block=Baud 38400
-    Baud_38400,
-    //% block=Baud 31250
-    Baud_31250,
-    //% block=Baud 28800
-    Baud_28800,
-    //% block=Baud 14400
-    Baud_14400,
-    //% block=Baud 9600
-    Baud_9600,
-    //% block=Baud 4800
-    Baud_4800,
-    //% block=Baud 1200
-    Baud_1200,
-    //% block=Baud 300
-    Baud_300,
-}
-
-enum VoiceType{
+enum VoiceType {
     //% block=None
-    None=0,
+    None = 0,
     //% block=Turn on the light
     Turn_on_the_light,
     //% block=Turn off the light
@@ -102,20 +58,20 @@ namespace grovevoicerecognizer {
      * Create Grove - Voice-Recognizer
      * @param TX_PIN  TX_PIN num
      * @param RX_PIN  RX_PIN num
-     * @param Baud    Serial baudrate
      */
-    //% blockId=grove_voice_recognizer_create block="Create Voice recognizer"
-    export function createVoiceRecognizer(TX_PIN:RedirectSerialPin,RX_PIN:RedirectSerialPin,Baud:SerialBuad)
-    {
-        serial.redirect(TX_PIN,RX_PIN,Baud);
+    //% blockId=grove_voice_recognizer_create block="Create Voice recognizer with TX|%TX_PIN and RX|%RX_PIN"
+    export function createVoiceRecognizer(TX_PIN: SerialPin, RX_PIN: SerialPin) {
+        serial.redirect(TX_PIN, RX_PIN, BaudRate.BaudRate9600);
     }
     /**
      *  Get Voice-Recognizer result.
      */
     //% blockId=grove_get_voice_recognizer_result  block="Get Voice Recognizer Result"
-    export function getResultFromSerial:VoiceType()
-    {
-        return Turn_on_the_light;
+    export function getResultFromSerial(): VoiceType {
+        let result: VoiceType;
+        let recv_data: Buffer = null;
+        recv_data = serial.readBuffer(1);
+        return recv_data[0];
     }
-    
+
 }
