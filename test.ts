@@ -5,7 +5,7 @@ basic.forever(function () {
     result = grovevoicerecognizer.getResultFromSerial();
     serial.writeNumber(result);
     switch (result) {
-        case VoiceType.Voice_Recognizer_None: basic.showIcon(IconNames.Angry);
+        case VoiceType.None: basic.showIcon(IconNames.Angry);
             break;
         case VoiceType.Turn_on_the_light: basic.showIcon(IconNames.Asleep);
             break;
