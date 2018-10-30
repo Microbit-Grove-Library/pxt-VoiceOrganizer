@@ -1,49 +1,49 @@
 enum VoiceType {
-    //% block=Voice Recognizer None
+    //% block="Voice Recognizer None"
     Voice_Recognizer_None = 0,
-    //% block=Turn on the light
+    //% block="Turn on the light"
     Turn_on_the_light,
-    //% block=Turn off the light
+    //% block="Turn off the light"
     Turn_off_the_light,
-    //% block=Play music
+    //% block="Play music"
     Play_music,
-    //% block=Pause
+    //% block="Pause"
     Pause,
-    //% block=Next
+    //% block="Next"
     Next,
-    //% block=Previous
+    //% block="Previous"
     Previous,
-    //% block=Up
+    //% block="Up"
     Up,
-    //% block=Down
+    //% block="Down"
     Down,
-    //% block=Turn on the TV
+    //% block="Turn on the TV"
     Turn_on_the_TV,
-    //% block=Turn off the TV
+    //% block="Turn off the TV"
     Turn_off_the_TV,
-    //% block=Increase temperature
+    //% block="Increase temperature"
     Increase_temperature,
-    //% block=Decrease temperature
+    //% block="Decrease temperature"
     Decrease_temperature,
-    //% block=What's the time
+    //% block="What's the time"
     What_the_time,
-    //% block=Open the door
+    //% block="Open the door"
     Open_the_door,
-    //% block=Close the door
+    //% block="Close the door"
     Close_the_door,
-    //% block=Left
+    //% block="Left"
     Left,
-    //% block=Right
+    //% block="Right"
     Right,
-    //% block=Stop
+    //% block="Stop"
     Stop,
-    //% block=Start
+    //% block="Start"
     Start,
-    //% block=Mode 1
+    //% block="Mode 1"
     Mode_1,
-    //% block=Mode 2
+    //% block="Mode 2"
     Mode_2,
-    //% block=Go
+    //% block="Go"
     Go
 }
 
