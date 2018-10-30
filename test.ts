@@ -1,11 +1,11 @@
-grovevoicerecognizer.createVoiceRecognizer(SerialPin.P14, SerialPin.P0, BaudRate.BaudRate9600);
+grovevoicerecognizer.createVoiceRecognizer(SerialPin.P14, SerialPin.P0);
 
 basic.forever(function () {
     let result: VoiceType;
     result = grovevoicerecognizer.getResultFromSerial();
     serial.writeNumber(result);
     switch (result) {
-        case VoiceType.None: basic.showIcon(IconNames.Angry);
+        case VoiceType.Voice_Recognizer_None: basic.showIcon(IconNames.Angry);
             break;
         case VoiceType.Turn_on_the_light: basic.showIcon(IconNames.Asleep);
             break;

@@ -1,6 +1,6 @@
 enum VoiceType {
-    //% block=None
-    None = 0,
+    //% block=Voice Recognizer None
+    Voice_Recognizer_None = 0,
     //% block=Turn on the light
     Turn_on_the_light,
     //% block=Turn off the light
@@ -89,7 +89,7 @@ namespace grovevoicerecognizer {
             while (1) {
                 
                 result = grovevoicerecognizer.getResultFromSerial()
-                if (result != VoiceType.None) {
+                if (result != VoiceType.Voice_Recognizer_None) {
                     control.raiseEvent(voiceRecognizerEvenNum, result);
                 }
                 basic.pause(100);
